@@ -1,5 +1,7 @@
 language: node_js
 node_js:
-- "0.8"
+- "4"
 before_install:
 - npm install
+- docker image build -t godeye/frontend .
+- docker run -d --name=customer -p 8889:8889 godeye/frontend
