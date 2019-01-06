@@ -4,7 +4,10 @@ node_js:
 before_install:
 - npm install
 - docker pull nginx
+
+script:
 - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_NAME" --password-stdin
 - docker build -t ying98/godeye_frontend .
 - docker push ying98/godeye_frontend:latest
 - docker run -d --name=customer -p 8889:8889 ying98/godeye_frontend
+
