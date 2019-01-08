@@ -3,11 +3,12 @@ node_js:
 - "8.11.3"
 before_install:
 - npm install
-- docker pull nginx
 
 script:
-- docker-compose stop
+- docker pull nginx
+- docker-compose down
 - docker-compose up
+- docker ps
 #- echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_NAME" --password-stdin
 #- docker build -t ying98/godeye_frontend .
 #- docker push ying98/godeye_frontend:latest
