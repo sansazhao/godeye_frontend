@@ -1,8 +1,7 @@
 FROM nginx
-#REPLACE CONF 替换配置文件
-ADD nginx.conf /usr/local/nginx/conf/
 #ADD RESOUCES 添加静态资源
-RUN mkdir -p /usr/local/nginx/html/static
-COPY build/ /usr/local/nginx/html/static
+COPY build/ /usr/share/nginx/html
+#REPLACE CONF 替换配置文件
+COPY nginx.conf /etc/nginx/nginx.conf
 CMD ["nginx"]
 
