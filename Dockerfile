@@ -1,7 +1,10 @@
 FROM nginx
-#把当前打包工程的html复制到虚拟地址
-ADD ./build /usr/share/nginx/html
-#使用自定义nginx.conf配置端口和监听
-COPY nginx.conf /etc/nginx/nginx.conf
-RUN /bin/bash -c 'echo init ok!!!'
+#REPLACE CONF 替换配置文件
+ADD nginx.conf /usr/local/nginx/conf/
+
+#ADD RESOUCES 添加静态资源
+RUN rm /usr/local/nginx/html/index.html
+RUN mkdir -p /usr/local/nginx/html/static
+COPY build/ /usr/local/nginx/html/static
+CMD ["nginx"]
 
