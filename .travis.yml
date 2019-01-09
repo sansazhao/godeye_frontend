@@ -5,6 +5,7 @@ before_install:
 - npm install
 
 script:
+- npm run build
 - docker pull nginx
 - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_NAME" --password-stdin
 - docker build -t ying98/godeye_frontend .
